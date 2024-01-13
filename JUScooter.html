@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="JUScooter.css">
+    <script src="JUScooter.js"></script>
+    <title>Student Scooter Booking</title>
+</head>
+<body>
+    <div id="loginContainer">
+        <img src="login.png" alt="login">
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="University Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="button" id="loginBtn" onclick="login()">Sign in</button>
+        </form>
+    </div>
+
+    <button id="findBtn" style="display: none" onclick="choosePaymentMethod()">Find a Scooter</button>
+    <img id="successlogin" src="success.gif" style="display: none" alt="successlogin">
+    <iframe id="juMap" style="display: none" src="https://www.google.com/maps/d/embed?mid=1GBWRqf27TXsXotfHegLZMx7aAbE&ehbc=2E312F" width="640" height="480"></iframe>
+
+    <div id="paymentModal" style="display:none" class="modal">
+        <div>
+            <h2 id="paymentMethod">Add Payment Method</h2>
+            <button id="creditBtn" onclick="choosePayment('creditCard')">Credit Card</button>
+            <button id="paypalBtn" onclick="choosePayment('paypal')">PayPal</button>
+            <button id="home" onclick="displayMap()">Back to Home</button>
+        </div>
+    </div>
+
+    <div id="billingContainer" style="display: none">
+        <h2>Successful Payment !!</h2>
+        <div class="billingItem">
+            <span>Amount Paid:</span>
+            <span>$50.00</span>
+        </div>
+        <div class="billingItem">
+            <span>Date:</span>
+            <span>January 15, 2024</span>
+        </div>
+        <div class="billingItem">
+            <span>Time:</span>
+            <span>10:30 AM</span>
+        </div>
+        <div class="billingItem">
+            <span>Duration of Ride:</span>
+            <span>30 minutes</span>
+        </div>
+        <br> <br>
+        <button id="home" onclick="displayMap()">Back to Home</button>
+    </div>
+
+    <div id="creditCardSection" class="paymentSection">
+        <h2>Enter Credit Card Information</h2>
+        <form id="creditCardForm" class="paymentForm">
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" placeholder="Enter card number" required>
+            
+            <label for="expiryDate">Expiry Date:</label>
+            <input type="text" id="expiryDate" placeholder="MM/YYYY" required>
+            
+         
+
+            <button type="button" class="confirmPaymentBtn" onclick="confirmCreditCardPayment()">Confirm Payment</button>
+        </form>
+        <button class="backToPaymentPageBtn" onclick="hideCreditCardSection()">Back to Payment Page</button>
+    </div>
+
+    <div id="paypalSection" class="paymentSection">
+        <h2>Enter PayPal Information</h2>
+        <form id="paypalForm" class="paymentForm">
+            <label for="paypalEmail">PayPal Email:</label>
+            <input type="email" id="paypalEmail" placeholder="Enter PayPal email" required>
+            
+            <label for="paypalPassword">PayPal Password:</label>
+            <input type="password" id="paypalPassword" placeholder="Enter PayPal password" required>
+
+            <button type="button" class="confirmPaymentBtn" onclick="confirmPaypalPayment()">Confirm Payment</button>
+        </form>
+        <button class="backToPaymentPageBtn" onclick="hidePaypalSection()">Back to Payment Page</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
